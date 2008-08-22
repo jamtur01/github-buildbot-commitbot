@@ -12,7 +12,9 @@ merb -I github-buildbot-commitbot.rb
 Before you start sending things through it, I recommend you pop open the source and edit the
 variables at the top.  Specifically:
 
-  c[:project] = "Example",
-  c[:mailto] = "<adam@example.com>",
-  c[:mailfrom] = "Commit Bot <noreply@example.com>",
+  c[:project]             = "Name of Project",
+  c[:buildhost]           = "BuildBot Hostname",
+  c[:git_dir]             = "path to local Git repo",
+  c[:git_buildbot]        = "path to Buildbot git_buildbot.py script",
+  c[:tmp_commit_file]     = "location of temporary file to hold commit data",
 
