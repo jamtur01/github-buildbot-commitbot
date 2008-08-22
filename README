@@ -9,6 +9,14 @@ In order to get Merb installed.  Once that's done, you can fire up your new gith
 
 merb -I github-buildbot-commitbot.rb
 
+This listens on port 4000 by default but can be overriden.
+
+Then add a post-receive hook as:
+
+http://buildhost.example.com:4000/commit
+
+A Github (or other remote repo post-receive hook) triggers the script to update a local Git repo, submit the commits to the git_buildbot.py script which then processes the changes and submits them ot BuildBot.  This assumes you have PBChangeSource enabled in your BuildBot configuration.
+
 Before you start sending things through it, I recommend you pop open the source and edit the
 variables at the top.  Specifically:
 
