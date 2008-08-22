@@ -1,0 +1,18 @@
+Github-BuildBot CommitBot
+=========================
+
+This is a Merb "very-flat" application.  You need to first do:
+
+$ gem install merb-core json
+
+In order to get Merb installed.  Once that's done, you can fire up your new github-BuildBot CommitBot with:
+
+merb -I github-buildbot-commitbot.rb
+
+Before you start sending things through it, I recommend you pop open the source and edit the
+variables at the top.  Specifically:
+
+  c[:project] = "Example",
+  c[:mailto] = "<adam@example.com>",
+  c[:mailfrom] = "Commit Bot <noreply@example.com>",
+
