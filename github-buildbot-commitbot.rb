@@ -25,9 +25,9 @@ require 'open-uri'
 require 'socket'
 
 Merb::Config.use { |c|
-  c[:project]             = "Example",
-  c[:buildhost]           = "BuildBot Hostname",
-  c[:git_dir]             = "The location of your local Git repo",
+  c[:project]             = "Puppet",
+  c[:buildhost]           = "BuildBot",
+  c[:git_dir]             = "/sources/puppet/.git",
   c[:git_buildbot]        = "/buildbot/git_buildbot.py",
   c[:tmp_commit_file]     = "/tmp/commit",
   c[:framework]           = {},
