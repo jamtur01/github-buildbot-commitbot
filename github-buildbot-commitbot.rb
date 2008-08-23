@@ -26,7 +26,9 @@ require 'socket'
 
 Merb::Config.use { |c|
   c[:project]             = "Puppet",
+  c[:project_github]      = "git://github.com/jamtur01/puppet.git",
   c[:buildhost]           = "BuildBot",
+  c[:project_dir]         = "/sources/puppet",
   c[:git_dir]             = "/sources/puppet/.git",
   c[:git_buildbot]        = "/buildbot/git_buildbot.py",
   c[:tmp_commit_file]     = "/tmp/commit",
@@ -56,14 +58,7 @@ class Commit < Merb::Controller
     ref = ch['ref']
 
     # Set Git directory
-    ENV['GIT_DIR'] = Merb::Config[:git_dir] 
-
-    # Update Git repository
-    git = %x{whereis git}
-    %x{#{git} pull origin}
-
-    # Sleep for 10 seconds
-    sleep(10)
+    ENV['GIT_DIR'] = Merb::Config[:git_dir]
 
     # create commit
     c = "#{before} " + "#{after} " + "#{ref}"
@@ -75,9 +70,6 @@ class Commit < Merb::Controller
 
     # Process change
     %x{#{Merb::Config[:git_buildbot]} < #{Merb::Config[:tmp_commit_file]}}
-
-    # Delete temporary commit file
-    f.delete
 
   end
 end
