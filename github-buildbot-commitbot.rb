@@ -26,9 +26,7 @@ require 'socket'
 
 Merb::Config.use { |c|
   c[:project]             = "Puppet",
-  c[:project_github]      = "git://github.com/jamtur01/puppet.git",
   c[:buildhost]           = "BuildBot",
-  c[:project_dir]         = "/sources/puppet",
   c[:git_dir]             = "/sources/puppet/.git",
   c[:git_buildbot]        = "/buildbot/git_buildbot.py",
   c[:tmp_commit_file]     = "/tmp/commit",
@@ -59,6 +57,9 @@ class Commit < Merb::Controller
 
     # Set Git directory
     ENV['GIT_DIR'] = Merb::Config[:git_dir]
+
+    # Fetch commits
+    %x{git fetch origin}
 
     # create commit
     c = "#{before} " + "#{after} " + "#{ref}"
