@@ -1,4 +1,4 @@
-# Github-Builbot CommitBot 
+# Github-Builbot CommitBot
 # v0.1 - 22/08/2008:  Initial release
 # - heavily draws on Adam Jacob's Github Commit Email Bot
 
@@ -58,7 +58,6 @@ class Commit < Merb::Controller
     # Set Git directory
     ENV['GIT_DIR'] = Merb::Config[:git_dir]
 
-    # Fetch commits
     %x{git fetch origin}
 
     # create commit
